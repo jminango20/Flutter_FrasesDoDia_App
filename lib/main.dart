@@ -11,14 +11,10 @@ void main() {
       decoration: BoxDecoration(
         border: Border.all(width: 3.0, color: Colors.white)
       ),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          Text("T1"),
-          Text("T2"),
-          Text("T3")
-        ],
+      /*contain, cover, fill, fitlHeight, fitWidth, none, scaleDown*/
+        child: Image.asset(
+        "imagens/mesa.jpg",
+        fit: BoxFit.contain,
       )
     ),
   ));
