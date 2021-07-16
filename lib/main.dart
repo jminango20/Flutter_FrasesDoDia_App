@@ -1,83 +1,62 @@
 import 'package:flutter/material.dart';
 
-/*
-Stateless -> Widgets que nao podem ser alterados (constantes)
-Stateful -> Widgets que podem ser alterados (variaveis)
- */
-
-void main() {
+void main(){
   runApp(MaterialApp(
+    home: Home(),
     debugShowCheckedModeBanner: false,
-    home: HomeStateful(),
   ));
 }
 
-class HomeStateful extends StatefulWidget {
+class Home extends StatefulWidget {
   @override
-  _HomeStatefulState createState() => _HomeStatefulState();
+  _HomeState createState() => _HomeState();
 }
 
-class _HomeStatefulState extends State<HomeStateful> {
-  var _texto = "Juan";
+class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Instagram"),
-        backgroundColor: Colors.green,
-      ),
-      body: Container(
-        child: Column(
-          children: [
-            RaisedButton(
-              onPressed: (){
-                setState(() { //Metodo fue alterado; Configura um novo estado
-                  _texto = "Curso Flutter";
-                });
-              },
-              color: Colors.amber,
-              child: Text("Clique Aqui"),
-            ),
-            Text("Nome: $_texto")
-          ],
+        title: Text(
+          "Frases del Dia",
         ),
-      ),
-    );
-  }
-}
-
-
-
-
-class Home extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-
-    var _titulo = "Instagram";
-
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(_titulo),
         backgroundColor: Colors.green,
       ),
-      body: Padding(
-        padding: EdgeInsets.all(16),
-        child: Text("Contenido Principal"),
-      ),
-      bottomNavigationBar: BottomAppBar(
-        color: Colors.lightGreen,
-        child: Padding(
+      body: Center(
+        child: Container(
+          /*decoration: BoxDecoration(
+              border: Border.all(width: 3, color: Colors.amber)
+          ),*/
           padding: EdgeInsets.all(16),
-          child: Row(
+          //width: double.infinity, //espaco disponivel
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              Text("Texto1"),
-              Text("Texto2"),
+              Image.asset("imagens/logo.png"),
+              Text("Clique abaixo para gerar uma frase",
+                textAlign: TextAlign.justify,
+                style: TextStyle(
+                    fontSize: 25,
+                    fontStyle: FontStyle.italic,
+                    color: Colors.black
+                ),),
+              RaisedButton(
+                  child: Text(
+                    "Nova Frase",
+                    style: TextStyle(
+                        fontSize: 25,
+                        color: Colors.white,
+                        fontWeight: FontWeight.bold
+                    ),
+                  ),
+                  color: Colors.green,
+                  onPressed: (){}
+              )
             ],
           ),
         ),
       ),
     );
-
   }
 }
-
