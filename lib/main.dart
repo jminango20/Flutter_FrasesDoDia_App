@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'dart:math';
 
 void main(){
   runApp(MaterialApp(
@@ -13,6 +14,22 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
+
+  var _frase = "Clique no botao para gerar uma frase";
+  var _fraseGeradas = [
+    "A persistência é o caminho do êxito.",
+    "O que não provoca minha morte faz com que eu fique mais forte.",
+    "O que me preocupa não é o grito dos maus. É o silêncio dos bons.",
+    "No meio da dificuldade encontra-se a oportunidade."
+  ];
+
+  void _gerarFrase(){
+    var numeroAleatorio = Random().nextInt(_fraseGeradas.length);
+    setState(() {
+      _frase = _fraseGeradas[numeroAleatorio];
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -34,7 +51,7 @@ class _HomeState extends State<Home> {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               Image.asset("imagens/logo.png"),
-              Text("Clique abaixo para gerar uma frase",
+              Text(_frase,
                 textAlign: TextAlign.justify,
                 style: TextStyle(
                     fontSize: 25,
@@ -51,7 +68,7 @@ class _HomeState extends State<Home> {
                     ),
                   ),
                   color: Colors.green,
-                  onPressed: (){}
+                  onPressed: _gerarFrase,
               )
             ],
           ),
